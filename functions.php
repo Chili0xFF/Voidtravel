@@ -57,7 +57,7 @@
                         $_SESSION['gracz']->setZre($nowa);
                         break;
                     case 'wyt':
-                        $query = "UPDATE uzytkownik SET Wytrzymałosc='$nowa' WHERE ID='$id_gracza'";
+                        $query = "UPDATE uzytkownik SET Wytrzymalosc='$nowa' WHERE ID='$id_gracza'";
                         $_SESSION['gracz']->setWytrz($nowa);
                         break;
                     case 'szcz':

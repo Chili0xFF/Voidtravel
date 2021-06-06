@@ -1,8 +1,13 @@
 <?php
+    include_once 'istota.php'; 
+    include_once 'uzytkownik.php';
     include_once 'connect.php';
     include_once 'functions.php';
-    session_start();
-    if(!isset($_SESSION['gracz']))header("Location: index.php");
+    session_start();   //NAJPIERW KLASY. POTEM SESJA. ZAPAMIĘTAĆ.
+    if(!isset($_SESSION['gracz'])){
+        header("Location: index.php");
+        exit();
+    }
     ?>
 <html>
 <head>
@@ -28,8 +33,7 @@
         </div>
     </div>
     <div class="panel" id="srodkowy">
-        <div id="sklep"><a href="sklep.php">SKLEP</a></div><div id="trening"><a href="trening.php">PLAC TRENINGOWY</a></div>
-        <div id="warta"><a href="warta.php">WARTA</a></div><div id="świątynia"><a href="swiatynia.php">ŚWIĄTYNIA</a></div>
+
     </div>
     <div class="panel" id="prawy">
 
