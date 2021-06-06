@@ -20,8 +20,7 @@
         if($row=$result->fetch_assoc()){
                 $przeciwnik = new przeciwnik($row);
                 //wszystko bangla. Teraz stwórz funkcję która odbierze tego wroga, odbierze gracza
-                //i ich na siebie napuści. Idea na szybko - 
-                //Kradnij z dedeków. AC = 10+zrecznosc, Attack roll = 1d20+zrecznosc, DMG = (min=1*sila max=poziom*sila), hp =  Wytrzymalosc * 5 czy cos.
+                //i ich na siebie napuści.
                 
             }
             else{
@@ -74,7 +73,7 @@
         <div id="opisEnemy">
             <h1>Narracja</h1>
             <?php 
-                echo $przeciwnik->getOpis();
+                echo utf8_encode($przeciwnik->getOpis());
             ?>
         </div>
         <div id="Arena">
