@@ -33,7 +33,7 @@
         </div>
     </div>
     <div class="panel" id="srodkowy">
-        <table>
+        <table id="ranking">
             <tr><th>Pozycja</th><th>Nazwa</th><th>Poziom</th><th>Doświadczenie</th><th>Etap eksploracji</th>
             <?php ranking();?>
         </table>

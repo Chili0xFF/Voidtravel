@@ -179,3 +179,21 @@ a{
     border-radius: 15px;
     border: 3px black solid;
 }
+#ranking{
+    text-align: center;
+    margin: 3%;
+    width: 94%;
+    border: 3px blueviolet solid;
+    border-collapse: collapse;
+}
+#ranking>tbody>tr>td{
+    border: 3px blueviolet solid;
+    
+}
+#plecakBox{
+    border: 3px blueviolet solid;
+    border-collapse: collapse;
+}
+#plecakBox>tbody>tr>td{
+    border: 3px blueviolet solid;
+}

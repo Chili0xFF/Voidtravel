@@ -164,10 +164,26 @@
     }
     function ranking(){
         include 'connect.php';
-        $query = 'SELECT * FROM uzytkownik ORDER BY Exp_curr';
+        $query = 'SELECT * FROM uzytkownik ORDER BY Exp_curr DESC';
+        $result = $db_connect->query($query);
+        $i=1;
+        while($row=$result->fetch_assoc()){
+            $uzytkownikRank = new uzytkownik($row);
+            $nazwa = $uzytkownikRank->getLogin();
+            $poziom = $uzytkownikRank->getLvl();
+            $doswiadczenie = $uzytkownikRank->getExpCurrent();
+            $ekspedycja = $uzytkownikRank->getEtap()-1;
+            echo "<tr><td>$i.</td><td>$nazwa</td><td>$poziom</td><td>$doswiadczenie</td><td>$ekspedycja</td></tr>";
+            $i++;
+        }
+    }
+    function plecak($gracz){
+        include 'connect.php';
+
+        $query = "SELECT Nazwa, Wartosc_min, Wartosc_max FROM `przedmiot` INNER JOIN `przedmiotgracz` ON `przedmiot`.`ID` = `przedmiotgracz`.`Id_Wlasciciela` INNER JOIN `uzytkownik` ON `przedmiotgracz`.Id_Wlasciciela = `uzytkownik`.ID WHERE `uzytkownik`.ID='1'";
         $result = $db_connect->query($query);
         while($row=$result->fetch_assoc()){
-            var_dump($row);
+            echo "<tr><td>".$row['Nazwa']."</td><td>".$row['Wartosc_min']."~".$row['Wartosc_max']."</td></tr>";
             echo "<br>";
         }
     }

@@ -56,7 +56,12 @@
             lewy dolny
         </div>
         <div id="plecak">
-            prawy dolny
+            <table id="plecakBox">
+                <tr><th>Nazwa</th><th>Skutecznosc</th></tr>
+            <?php 
+                plecak($_SESSION['gracz']);
+            ?>
+            </table>
         </div>
     </div>
     <div class="panel" id="prawy">
