@@ -1,0 +1,181 @@
+body{
+    background-image: url("./img/voidbg.jpg");
+    background-size: 100%;
+    color:blueviolet;
+}
+a{
+    text-decoration: none;
+    color:blueviolet;
+}
+.panel{
+    background-color: RGBA(46, 40, 51,.7);
+}
+#gorny{
+    width: 99%;
+    height: 13%;
+    margin: 0.5%;
+}
+#lewy{
+    float: left;
+    width: 14%;
+    height: 75%;
+    margin: 0.5%;
+}
+#menu table{
+    margin:auto;
+    font-size:2em;
+}
+#menu td{
+    padding: 5%;
+}
+#srodkowy{
+    float: left;
+    width: 73%;
+    height: 75%;
+    margin: 0.5%;
+}
+#prawy{
+    float: left;
+    width: 10%;
+    height: 75%;
+    margin: 0.5%;
+}
+#dolny{
+    clear: both;
+    width: 99%;
+    height: 8%;
+    margin-left:0.5%;
+    margin-right:0.5%;
+}
+#tekst_fabularny, #zaloguj{
+    background-color: RGBA(00,00,0,.5);
+    border-radius: 15px;
+    text-align: center;
+    margin-top: 2%;
+    margin-left: 20%;
+    margin-right: 20%;
+    padding: 15px;
+}
+#zaloguj>a{
+    color: white !important;
+}
+.panel#dolny>a{
+    color: white;
+}
+#sklep,#trening,#warta,#świątynia{
+    width: 49%;
+    height: 48%;
+    float: left;
+    font-size: 300%;
+    text-align: center;
+    margin-top: 5%;
+}
+#warta{
+    clear:both;
+}
+#awatar,#statystyki,#eq,#plecak{
+    width: 40%;
+    height: 40%;
+    float: left;
+
+    margin: 2.5%;
+    padding:2%;
+    /*border: 3px solid black;*/
+}
+#statystyki{
+    border: 3px solid black;
+    border-radius: 15px;
+    background-color:RGBA(46, 40, 51,.8)
+}
+#eq,#treningStaty{
+    clear:both;
+}
+#awatar{
+    padding: 20px;
+}
+#awatar>#imgBox>img{
+    border: 3px solid black;
+    border-radius: 20px;
+    width: auto;
+    height: 100%;
+}
+#statBox>table{
+    margin-top: 5%;
+    text-align: center;
+    border: 3px solid;
+    border-color:RGBA(0,0,0,1);
+}
+#statBox>table>tr>td{
+    border: 3px solid black;
+}
+#treningStaty{
+    width: 100%;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top:5%;
+    margin-bottom:5%;
+    /*background-color: red;*/
+}
+#treningOpis,#treningSila,#treningZrecznosc,#treningWytrzymalosc,#treningSzczescie{
+    background-color:RGBA(46, 40, 51,.8);
+    border-radius: 15px;
+    width: 50%;
+    font-size: 300%;
+}
+.guzik_trenuj{
+    height: 40px;
+    width: 70px;
+    border: 2px solid blueviolet;
+    border-radius: 5px;
+    background-color: rgb(28, 16, 32);
+    color: blueviolet;
+    float: right;
+}
+#main-baner>img{
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 1%;
+}
+.enemy{
+    width: 200px;
+    height: 100px;
+    margin-top: 50px;
+    margin-left: 30px;
+}
+.enemy>img{
+    width: 80%;
+    margin:10%;
+}
+#obrazEnemy{
+    float: left;
+    width: 30%;
+    
+    background: RGBA(46, 40, 51,.8);
+}
+#obrazEnemy>#imgBox>img{
+    width: 100%;
+    max-height: 400px;
+    border: 3px black solid;
+    margin-left: 15px;
+    border-radius: 15px;
+}
+#opisEnemy{
+    background-color: RGBA(46, 40, 51,.8);
+    border: 3px black solid;
+    border-radius: 15px;
+    padding:20px;
+    margin: 5%;
+    width: 20%;
+    clear:both;
+    float: left;
+}
+#Arena{
+    padding: 2%;
+    float: left;
+    width: 50%;
+    height: 40%;
+    background: RGBA(46, 40, 51,.8);
+    border-radius: 15px;
+    border: 3px black solid;
+}
