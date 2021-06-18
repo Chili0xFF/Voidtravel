@@ -9,6 +9,10 @@
         header("Location: index.php");
         exit();
     }
+    if(wartaSpr()!=FALSE){
+        header("Location: warta.php");
+        exit();
+    }
     ?>
 <html>
 <head>

@@ -17,7 +17,7 @@
     </div>
     <div class="panel" id="lewy">
         <div id="menu">
-            <table>
+            <table> 
                 <tr><td><a href='main.php'>Miasto</a></td></tr>
                 <tr><td><a href='postac.php'>Postać</a></td></tr>
                 <tr><td><a href='eksploracja.php'>Eksploracja</a></td></tr>

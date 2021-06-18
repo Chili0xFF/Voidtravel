@@ -11,6 +11,10 @@
         header("Location: index.php");
         exit();
     }
+    if(wartaSpr()!=FALSE){
+        header("Location: warta.php");
+        exit();
+    }
     $id_enemy = $_GET['przeciwnik'];
     if($_SESSION['gracz']->getEtap()<$id_enemy||$id_enemy<1){
         $_SESSION['error']="Walka z tym przeciwnikiem to samobójstwo!";

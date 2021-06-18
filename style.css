@@ -207,3 +207,18 @@ a{
     max-height: 150px;
     max-width: 150px;
 }
+#narracja_warta{
+    border: 3px blueviolet solid;
+    background-color: RGBA(46, 40, 51,.8);
+    border-radius: 15px;
+    padding: 15px;
+    margin: 10%;
+    width: 30%;
+    height: 30%;
+}
+#tableitems>tbody>tr>td,#tableitems>tbody>tr>th{
+    border: 3px blueviolet solid;
+}
+#tableitems{
+    border-collapse: collapse;
+}

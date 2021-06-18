@@ -212,7 +212,67 @@
             }
         
         echo "</table>";
+    }
+    function wartaSpr(){
+        include 'connect.php';
+        $graczId = $_SESSION['gracz']->getId();
+        $query = "SELECT * FROM warta WHERE id_gracza=$graczId";
+        $result = $db_connect->query($query);
+        $row=$result->fetch_assoc();
+        if($row==NULL){
+            return FALSE;
+        }
+        else{
+            return $row['data_zakonczenia'];
+        }
         
+    }
+    function wartaText($result){
+        if($result==FALSE){
+            echo "<form action='wartujemy.php' method='get'>
+            <label>Ile godzin chcesz wartować: <input type='number' min='1' max='48' name='czas'></label>
+            <input type='submit'></form>";
+        }
+        else{
+            echo "Twoja warta kończy się: ".$result;
+        }
+    }
+    function warta($czas){
+        include 'connect.php';
+        $graczId = $_SESSION['gracz']->getId();
+        $year = date("Y");
+        $month = date("F");
+        $day = date("D");
+        $hour = date("G");
+        $minute = date("i");
+        $hajs=$czas*5*$_SESSION['gracz']->getLvl();
+        $czas = $czas*3600; //godziny na sekundy;
+        $dateEnd = date("Y-m-d H:i:s",time()+$czas);
+        echo $dateEnd;
         
+//date("Y F D G:i",time()+$czas),
+        $query = "INSERT INTO warta(id_gracza,data_zakonczenia)VALUES('$graczId','$dateEnd');";
+        $result = $db_connect->query($query);
+        if($result==false){
+            $_SESSION['error']="ERROR OCCURED. PLEASE TRY AGAIN LATER";
+        }
+        $query = "CREATE EVENT IF NOT EXISTS warta$graczId
+        ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL $czas second
+        DO
+          CALL podnieshajs($graczId,$hajs);
+        ";
+        $result = $db_connect->query($query);
+        var_dump($result);
+    }
+    function item(){
+        include 'connect.php';
+        $graczId = $_SESSION['gracz']->getId();
+        $query = "CALL items($graczId);";
+        $result = $db_connect->query($query);
+        echo "<table id='tableitems'><tr><th>Typ</th><th>Nazwa</th><th>Wartosc</th><th>Cena</th></tr>";
+        while($row = $result->fetch_assoc()){
+            echo "<tr><td>".$row['Typ']."</td><td>".$row['Nazwa']."</td><td>".$row['Wartosc_min']."/".$row['Wartosc_max']."</td><td>".$row['Cena']."</td><td><a href='kup.php?id=".$row['Id_przedmiotu']."'>KUP TERAZ</a></td></tr>";
+        }
+        echo "</table>";
     }
 ?>

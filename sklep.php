@@ -33,7 +33,7 @@
         </div>
     </div>
     <div class="panel" id="srodkowy">
-
+        <?php item();?>
     </div>
     <div class="panel" id="prawy">
 

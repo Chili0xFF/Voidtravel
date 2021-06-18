@@ -36,7 +36,7 @@
         <div id="awatar">
             <div id='imgBox'><img src="img/void.png" style="width: 100%; height: auto;"></div>
         </div>
-        <div id="opis"><h3>Plotka w mieście mówi, że ten kamień runiczny wyrósł spod ziemi niedługo po tym jak pojawiła się mgła. Mówi się także, że Kroczący w Mgle tacy jak Ty, mogą tutaj ofiarować fragmenty które pozostają z pokonanych potworów, aby podnieść swoje zdolności bojowe. Może i to tylko bujda... a może nie?</h3></div>
+        <div class="opis"><h3>Plotka w mieście mówi, że ten kamień runiczny wyrósł spod ziemi niedługo po tym jak pojawiła się mgła. Mówi się także, że Kroczący w Mgle tacy jak Ty, mogą tutaj ofiarować fragmenty które pozostają z pokonanych potworów, aby podnieść swoje zdolności bojowe. Może i to tylko bujda... a może nie?</h3></div>
         <br>
         <br>
         <br>

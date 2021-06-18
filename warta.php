@@ -33,7 +33,14 @@
         </div>
     </div>
     <div class="panel" id="srodkowy">
-
+    <div id="awatar">
+            <div id='imgBox'><img src="img/void.png" style="width: 100%; height: auto;"></div>
+        </div>    
+        <div class="opis"><h3>Raz na jakiś czas warto odpocząć i postać na murach. Twoim zadaniem jest wypatrywanie nadchodzących gremlinów, jednak nikt nie będzie miał ci tego za złe jeśli się zdrzemniesz...</h3></div>   
+        <div id="wartowanie">
+            <?php wartaText(wartaSpr());?>
+        </div>
+    
     </div>
     <div class="panel" id="prawy">
 
