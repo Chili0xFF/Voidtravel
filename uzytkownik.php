@@ -153,15 +153,18 @@
             $graczId=$this->getId();
             $query = "UPDATE uzytkownik SET Exp_curr=$expNew WHERE ID='$graczId'";
             $result = $db_connect->query($query);
-
-            if($this->getExpCurrent()>=$this->getExpMax()){
-                return true;
-            }
-            else return false;
+            if($this->getExpMax()!=0)
+                {
+                    if($this->getExpCurrent()>=$this->getExpMax())
+                    {
+                        return true;
+                    }
+                    else return false;
+                }
         }
         public function lvlUp(){
             include 'connect.php';
-            $expAdvancement = [0,300,900,2700,6500,14000,23000,34000,48000];
+            $expAdvancement = [0,300,900,2700,6500,14000,23000,34000,48000,64000,85000,100000,120000,140000,165000,195000,225000,265000,305000,355000,0];
             $lvlCurr = $this->getLvl();
             $lvlNew = $lvlCurr+1;
             $graczId=$this->getId();

@@ -197,3 +197,13 @@ a{
 #plecakBox>tbody>tr>td{
     border: 3px blueviolet solid;
 }
+#galeriaPrzeciwnikow{
+    border-collapse: collapse;
+}
+#galeriaPrzeciwnikow>tbody>tr>td{
+    border: 3px blueviolet solid;
+}
+.enemyImage{
+    max-height: 150px;
+    max-width: 150px;
+}

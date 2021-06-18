@@ -38,26 +38,7 @@
         <?php if(isset($_SESSION['error']))echo "<div style='color: red'>".$_SESSION['error']."</div>";?>
         <div id="enemyGallery">
         <?php 
-        $query = "SELECT * FROM przeciwnik WHERE ID<=".$_SESSION['gracz']->getEtap().";";
-        $result = $db_connect->query($query);
-        $i=1;
-        while($row=$result->fetch_assoc()){
-            echo "<div class='enemy' id='enemy$i'";
-            if($i%5==0){
-                echo " style='clear: both;'";
-            }
-            else{
-                echo "style='float: left;'";
-            }
-            echo ">";
-            $przeciwnik = new przeciwnik($row);
-            echo $przeciwnik->getNazwa();
-            echo "<img src='img/".$przeciwnik->getHref()."'><a href='walka.php?przeciwnik=".$przeciwnik->getId()."'>Walcz!</a>";
-            $i++;
-            echo "</div>";
-        }
-        
-        
+        enemies($_SESSION['gracz']->getEtap());
         ?>
         </div>
     </div>

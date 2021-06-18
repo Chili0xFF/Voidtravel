@@ -1,9 +1,11 @@
 <?php
+    header('Content-type: text/html; charset=utf-8');
     include_once 'istota.php'; 
     include_once 'uzytkownik.php';
     include_once 'przeciwnik.php';
     include_once 'connect.php';
     include_once 'functions.php';
+    
     session_start();   //NAJPIERW KLASY. POTEM SESJA. ZAPAMIĘTAĆ.
     if(!isset($_SESSION['gracz'])){
         header("Location: index.php");
@@ -32,6 +34,7 @@
     <title>Voidtravel</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="style.css" type="text/css">
+    
     </head>
     <body>
 <div id='container'>
@@ -73,12 +76,12 @@
         <div id="opisEnemy">
             <h1>Narracja</h1>
             <?php 
-                echo utf8_encode($przeciwnik->getOpis());
+                echo $przeciwnik->getOpis();
             ?>
         </div>
         <div id="Arena">
             <?php 
-            eksploracjaWalka($_SESSION['gracz'],$przeciwnik) 
+                eksploracjaWalka($_SESSION['gracz'],$przeciwnik);
             ?>
         </div>
     </div>

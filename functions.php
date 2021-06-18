@@ -179,12 +179,40 @@
     }
     function plecak($gracz){
         include 'connect.php';
-
-        $query = "SELECT Nazwa, Wartosc_min, Wartosc_max FROM `przedmiot` INNER JOIN `przedmiotgracz` ON `przedmiot`.`ID` = `przedmiotgracz`.`Id_Wlasciciela` INNER JOIN `uzytkownik` ON `przedmiotgracz`.Id_Wlasciciela = `uzytkownik`.ID WHERE `uzytkownik`.ID='1'";
+        $id = $gracz->getId();
+        $query = "SELECT Nazwa, Wartosc_min, Wartosc_max FROM `przedmiot` INNER JOIN `przedmiotgracz` ON `przedmiot`.`ID` = `przedmiotgracz`.`Id_Wlasciciela` INNER JOIN `uzytkownik` ON `przedmiotgracz`.Id_Wlasciciela = `uzytkownik`.ID WHERE `uzytkownik`.ID='$id'";
         $result = $db_connect->query($query);
         while($row=$result->fetch_assoc()){
             echo "<tr><td>".$row['Nazwa']."</td><td>".$row['Wartosc_min']."~".$row['Wartosc_max']."</td></tr>";
             echo "<br>";
         }
+    }
+    function enemies($etapMax){
+        include 'connect.php';
+        $query = "SELECT * FROM przeciwnik WHERE ID<=".$etapMax.";";
+        $result = $db_connect->query($query);
+        $i=0;
+        
+        while($row=$result->fetch_assoc()){
+        $przeciwnik[$i] = new przeciwnik($row);
+        $i++;
+        }
+        echo "<table id='galeriaPrzeciwnikow'>";
+        for($j=0;$j-1<sizeof($przeciwnik)%4;$j++){
+            echo "<tr>";
+            for($i=$j*4;$i<sizeof($przeciwnik)&&($i<($j+1)*4);$i++){
+                echo "<td><B>".($przeciwnik[$i]->getNazwa())."</B></td>";
+            }echo "</tr>";
+            for($i=$j*4;$i<sizeof($przeciwnik)&&($i<($j+1)*4);$i++){
+                echo "<td><img class='enemyImage' src='img/".$przeciwnik[$i]->getHref()."'></td>";
+            }echo "</tr>";
+            for($i=$j*4;$i<sizeof($przeciwnik)&&($i<($j+1)*4);$i++){
+                echo "<td><a href='walka.php?przeciwnik=".$przeciwnik[$i]->getId()."'>Walcz!</a></td>";
+            }echo "</tr>";
+            }
+        
+        echo "</table>";
+        
+        
     }
 ?>
