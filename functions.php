@@ -180,10 +180,10 @@
     function plecak($gracz){
         include 'connect.php';
         $id = $gracz->getId();
-        $query = "SELECT Nazwa, Wartosc_min, Wartosc_max FROM `przedmiot` INNER JOIN `przedmiotgracz` ON `przedmiot`.`ID` = `przedmiotgracz`.`Id_Wlasciciela` INNER JOIN `uzytkownik` ON `przedmiotgracz`.Id_Wlasciciela = `uzytkownik`.ID WHERE `uzytkownik`.ID='$id'";
+        $query = "SELECT przedmiot.ID, Nazwa, Wartosc_min, Wartosc_max, Cena FROM `przedmiot` INNER JOIN `przedmiotgracz` ON `przedmiot`.`ID` = `przedmiotgracz`.`Id_Przedmiotu` INNER JOIN `uzytkownik` ON `przedmiotgracz`.Id_Wlasciciela = `uzytkownik`.ID WHERE `uzytkownik`.ID='$id'";
         $result = $db_connect->query($query);
         while($row=$result->fetch_assoc()){
-            echo "<tr><td>".$row['Nazwa']."</td><td>".$row['Wartosc_min']."~".$row['Wartosc_max']."</td></tr>";
+            echo "<tr><td>".$row['Nazwa']."</td><td>".$row['Wartosc_min']."~".$row['Wartosc_max']."</td><td>".$row['Cena']."</td><td><a href='sell.php?id=".$row['ID']."'>SPRZEDAJ</a></td></tr>";
             echo "<br>";
         }
     }
@@ -259,7 +259,7 @@
         $query = "CREATE EVENT IF NOT EXISTS warta$graczId
         ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL $czas second
         DO
-          CALL podnieshajs($graczId,$hajs);
+          CALL warta($graczId,$hajs);
         ";
         $result = $db_connect->query($query);
         var_dump($result);
@@ -274,5 +274,56 @@
             echo "<tr><td>".$row['Typ']."</td><td>".$row['Nazwa']."</td><td>".$row['Wartosc_min']."/".$row['Wartosc_max']."</td><td>".$row['Cena']."</td><td><a href='kup.php?id=".$row['Id_przedmiotu']."'>KUP TERAZ</a></td></tr>";
         }
         echo "</table>";
+    }
+    function kup($itemId){
+        include 'connect.php';
+        
+        $graczId = $_SESSION['gracz']->getId();
+        echo "itemId ".$itemId." graczId ".$graczId."<br>";
+        $query = "SELECT * FROM sklep WHERE Id_klienta=$graczId AND Id_przedmiotu=$itemId";
+        $result = $db_connect->query($query);
+        $row=$result->fetch_assoc();
+        
+        $query = "CALL itemPurchase($graczId,$itemId);";
+        $result = $db_connect->query($query);
+        $row = $result->fetch_assoc();
+        change_fragments(($row['Cena'])*(-1),$graczId);
+    }
+    function sprzedaj($itemId){
+        include 'connect.php';
+        $graczId = $_SESSION['gracz']->getId();
+        //echo "itemId ".$itemId." graczId ".$graczId."<br>";
+        $query = "SELECT * FROM przedmiotgracz WHERE Id_Wlasciciela=$graczId AND Id_Przedmiotu=$itemId";
+        $result = $db_connect->query($query);
+        if($row=$result->fetch_assoc()){
+            $query = "CALL itemSell($graczId,$itemId);";
+            $result = $db_connect->query($query);
+            $row = $result->fetch_assoc();
+            change_fragments(($row['Cena']),$graczId);
+        }
+    }
+    function getLogs(){
+        include 'connect.php';
+        $query = 'CALL getLogs();';
+        $result = $db_connect->query($query);
+        echo "<table id='logs'><tr><th>ID</th><th>Description</th><th>Value</th></tr>";
+        while($row = $result->fetch_array()){
+            echo "<tr><td>".$row['ID']."</td><td>".$row['Description']."</td><td>".$row['Wartosc']."</td></tr>";
+        }
+        echo "</table>";
+    }
+    function energiaSpr(){
+        include 'connect.php';
+        $graczId = $_SESSION['gracz']->getId();
+        $query = "SELECT energia FROM uzytkownik WHERE ID = $graczId";
+        $result = $db_connect->query($query);
+        if($row = $result->fetch_assoc()){
+            return $row['energia'];
+        }
+    }
+    function energiaLower($graczId){
+        include 'connect.php';
+        $query = "CALL energiaLower($graczId)";
+        $result = $db_connect->query($query);
     }
 ?>

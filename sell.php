@@ -8,7 +8,7 @@ include 'functions.php';
         exit();
     }
     $przedmiotId = $_GET['id'];
-    kup($przedmiotId);
-    header("Location: sklep.php");
+    sprzedaj($przedmiotId);
+    header("Location: postac.php");
 
 ?>

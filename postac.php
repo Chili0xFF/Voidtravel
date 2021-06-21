@@ -57,7 +57,7 @@
         </div>
         <div id="plecak">
             <table id="plecakBox">
-                <tr><th>Nazwa</th><th>Skutecznosc</th></tr>
+                <tr><th>Nazwa</th><th>Skutecznosc</th><th>Cena</th></tr>
             <?php 
                 plecak($_SESSION['gracz']);
             ?>

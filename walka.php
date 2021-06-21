@@ -15,6 +15,12 @@
         header("Location: warta.php");
         exit();
     }
+    if(energiaSpr()=="0"){
+        $_SESSION['error']="Niewystarczająco energi!";
+        header("Location: eksploracja.php");
+        exit();
+    }
+    energiaLower($_SESSION['gracz']->getId());
     $id_enemy = $_GET['przeciwnik'];
     if($_SESSION['gracz']->getEtap()<$id_enemy||$id_enemy<1){
         $_SESSION['error']="Walka z tym przeciwnikiem to samobójstwo!";
